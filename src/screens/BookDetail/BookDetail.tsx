@@ -1,7 +1,7 @@
-import React from 'react';
 import {RouteProp} from '@react-navigation/core';
-import {useTranslation} from '@hooks';
+import React from 'react';
 import {View, Text, Image, ScrollView} from '@components';
+import {useTranslation} from '@hooks';
 import {TBook} from '@types';
 import styles from './styles';
 

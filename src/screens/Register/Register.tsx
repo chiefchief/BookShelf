@@ -3,9 +3,9 @@ import {TextInput as TI} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {View, Pressable, Text, KeyboardAvoidingView, UsualButton, TextInput, Keyboard} from '@components';
 import {urls} from '@constants';
-import {httpPost, navigate} from '@services';
 import {useTranslation} from '@hooks';
 import {setUser} from '@reducers/user';
+import {httpPost, navigate} from '@services';
 import styles from './styles';
 
 const Register: React.FC = () => {

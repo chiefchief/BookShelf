@@ -1,7 +1,8 @@
 import {combineReducers} from 'redux';
 import _global from './_global';
-import user from './user';
 import books from './books';
+import user from './user';
+
 // ADD IMPORT
 
 const rootReducer = combineReducers({

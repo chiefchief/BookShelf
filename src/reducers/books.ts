@@ -1,8 +1,8 @@
 import {takeLatest, put, call, debounce} from 'redux-saga/effects';
-import {httpGet} from '@services';
-import {INITIAL_BOOKS} from './__proto__';
 import {urls} from '@constants';
+import {httpGet} from '@services';
 import {TBook} from '@types';
+import {INITIAL_BOOKS} from './__proto__';
 import {setLoader} from './_global';
 
 enum BooksTypes {

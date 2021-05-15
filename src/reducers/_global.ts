@@ -1,7 +1,7 @@
 import {all, put, takeLatest} from 'redux-saga/effects';
+import {INITIAL_GLOBAL} from './__proto__';
 import {resetBooks} from './books';
 import {resetUser} from './user';
-import {INITIAL_GLOBAL} from './__proto__';
 
 enum _globalTypes {
   LOG_OUT = '[_global] LOG_OUT',

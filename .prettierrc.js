@@ -5,4 +5,18 @@ module.exports = {
   trailingComma: 'all',
   arrowParens: 'avoid',
   printWidth: 120,
+  importOrder: [
+    'react',
+    'redux',
+    '@assets',
+    '@components',
+    '@constants',
+    '@helpers',
+    '@hooks',
+    '@reducers',
+    '@screens',
+    '@services',
+    '@types',
+    './',
+  ],
 };

@@ -4,8 +4,8 @@ import {useDispatch} from 'react-redux';
 import {View, Pressable, Text, KeyboardAvoidingView, UsualButton, TextInput, Keyboard} from '@components';
 import {urls} from '@constants';
 import {useTranslation} from '@hooks';
-import {httpPost, navigate} from '@services';
 import {setUser} from '@reducers/user';
+import {httpPost, navigate} from '@services';
 import styles from './styles';
 
 const Login: React.FC = () => {

@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import {ActivityIndicator, PressableProps, TextStyle, ViewStyle} from 'react-native';
 import Animated, {interpolate, useAnimatedStyle, useSharedValue, withTiming} from 'react-native-reanimated';
-import {width} from '@constants';
 import {Text, Pressable} from '@components';
+import {width} from '@constants';
 import styles from './styles';
 
 const DEFAULT_BUTTON_WIDTH = width - 32;
