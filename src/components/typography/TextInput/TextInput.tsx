@@ -1,4 +1,4 @@
-import React, {forwardRef, LegacyRef, RefObject, useMemo} from 'react';
+import React, {forwardRef, ForwardRefRenderFunction, RefObject, useMemo} from 'react';
 import {
   NativeSyntheticEvent,
   Pressable,
@@ -8,12 +8,12 @@ import {
   TextInputSubmitEditingEventData,
   View,
 } from 'react-native';
-import Icon from '../Icon/Icon';
+import {Icon} from '@components';
 import styles from './styles';
 
-const TextInput = (
-  {style, nextRef, value, onSubmitEditing, clear, search, ...TIProps}: TProps,
-  ref: LegacyRef<TI> | undefined,
+const TextInput: ForwardRefRenderFunction<TI, TProps> = (
+  {style, nextRef, value, onSubmitEditing, onChangeText, search, ...TIProps},
+  ref,
 ) => {
   const returnKT: ReturnKeyTypeOptions = useMemo(() => {
     return nextRef ? 'next' : 'go';
@@ -23,12 +23,17 @@ const TextInput = (
     nextRef ? nextRef.current?.focus() : onSubmitEditing && onSubmitEditing(e);
   };
 
+  const clear = () => {
+    onChangeText && onChangeText('');
+  };
+
   return (
     <View style={styles.container}>
       <TI
         returnKeyType={returnKT}
         onSubmitEditing={onSubmit}
         value={value}
+        onChangeText={onChangeText}
         ref={ref}
         style={[styles.defaultText, style]}
         {...TIProps}
@@ -51,5 +56,4 @@ export default forwardRef(TextInput);
 type TProps = {
   nextRef?: RefObject<TI>;
   search?: boolean;
-  clear?: () => void;
 } & TextInputProps;

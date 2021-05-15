@@ -1,8 +1,8 @@
 import React from 'react';
 import {Image, Pressable, Text, View} from '@components';
-import styles from './styles';
-import {TBook} from '@types';
 import {navigate} from '@services';
+import {TBook} from '@types';
+import styles from './styles';
 
 const BookItem: React.FC<TProps> = ({item}) => {
   const onPress = () => navigate('BookDetail', {item});

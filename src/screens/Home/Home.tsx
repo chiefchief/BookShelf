@@ -1,14 +1,14 @@
 import React from 'react';
-import {useState, useEffect, useTranslation, useHeaderHeight} from '@hooks';
-import {FlatList, TextInput, KeyboardAvoidingView, Keyboard} from '@components';
-import styles from './styles';
+import {ListRenderItem, RefreshControl, View} from 'react-native';
 import {connect, useDispatch} from 'react-redux';
+import {FlatList, TextInput, KeyboardAvoidingView, Keyboard} from '@components';
+import {useState, useEffect, useTranslation, useHeaderHeight} from '@hooks';
 import {getBooks, searchBooks} from '@reducers/books';
 import {TAppState} from '@reducers/index';
-import {TBook} from '@types';
 import {INITIAL_BOOKS, INITIAL_GLOBAL} from '@reducers/__proto__';
+import {TBook} from '@types';
 import BookItem from './components/BookItem/BookItem';
-import {ListRenderItem, RefreshControl, View} from 'react-native';
+import styles from './styles';
 
 const Home: React.FC<TProps> = ({books, _global}) => {
   const {t} = useTranslation();
@@ -30,8 +30,6 @@ const Home: React.FC<TProps> = ({books, _global}) => {
     dispatch(searchBooks(text));
   };
 
-  const clear = () => onChangeText('');
-
   const keyExtractor = (item: TBook) => item.id;
   const renderItem: ListRenderItem<TBook> = props => <BookItem {...props} />;
   const ListFooterComponent = () => <View style={styles.footer} />;
@@ -43,14 +41,7 @@ const Home: React.FC<TProps> = ({books, _global}) => {
       style={styles.container}
       onStartShouldSetResponder={onStartShouldSetResponder}
     >
-      <TextInput
-        search
-        clear={clear}
-        autoCorrect={false}
-        placeholder={t('Search')}
-        value={query}
-        onChangeText={onChangeText}
-      />
+      <TextInput search autoCorrect={false} placeholder={t('Search')} value={query} onChangeText={onChangeText} />
       <FlatList
         refreshControl={<RefreshControl refreshing={_global.loader} />}
         data={books.booksList}

@@ -1,9 +1,9 @@
 import React from 'react';
+import {RouteProp} from '@react-navigation/core';
 import {useTranslation} from '@hooks';
 import {View, Text, Image, ScrollView} from '@components';
-import styles from './styles';
-import {RouteProp} from '@react-navigation/core';
 import {TBook} from '@types';
+import styles from './styles';
 
 const BookDetail: React.FC<TProps> = ({route}) => {
   const {t} = useTranslation();

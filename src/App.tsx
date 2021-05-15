@@ -1,9 +1,9 @@
 import React from 'react';
 import {StatusBar} from 'react-native';
-import AppNavigator from './_AppNavigator/AppNavigator';
 import {Provider} from 'react-redux';
-import {store, persistor} from './store';
 import {PersistGate} from 'redux-persist/integration/react';
+import AppNavigator from './_AppNavigator/AppNavigator';
+import {store, persistor} from './store';
 
 const App: React.FC = () => {
   return (

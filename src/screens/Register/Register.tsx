@@ -1,12 +1,12 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {useTranslation} from '@hooks';
-import {View, Pressable, Text, KeyboardAvoidingView, UsualButton, TextInput, Keyboard} from '@components';
-import styles from './styles';
-import {httpPost, navigate} from '@services';
 import {TextInput as TI} from 'react-native';
-import {urls} from '@constants';
 import {useDispatch} from 'react-redux';
+import {View, Pressable, Text, KeyboardAvoidingView, UsualButton, TextInput, Keyboard} from '@components';
+import {urls} from '@constants';
+import {httpPost, navigate} from '@services';
+import {useTranslation} from '@hooks';
 import {setUser} from '@reducers/user';
+import styles from './styles';
 
 const Register: React.FC = () => {
   const {t} = useTranslation();
@@ -78,7 +78,6 @@ const Register: React.FC = () => {
         <View>
           <Text style={styles.errorText}>{error}</Text>
         </View>
-
         <UsualButton loading={loading} disabled={disabled} title={t('Register')} onPress={onSubmitEditing} />
       </KeyboardAvoidingView>
       <Pressable onPress={backLogin}>

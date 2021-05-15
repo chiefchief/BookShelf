@@ -1,12 +1,12 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {useTranslation} from '@hooks';
-import {View, Pressable, Text, KeyboardAvoidingView, UsualButton, TextInput, Keyboard} from '@components';
-import styles from './styles';
-import {httpPost, navigate} from '@services';
 import {TextInput as TI} from 'react-native';
-import {urls} from '@constants';
-import {setUser} from '@reducers/user';
 import {useDispatch} from 'react-redux';
+import {View, Pressable, Text, KeyboardAvoidingView, UsualButton, TextInput, Keyboard} from '@components';
+import {urls} from '@constants';
+import {useTranslation} from '@hooks';
+import {httpPost, navigate} from '@services';
+import {setUser} from '@reducers/user';
+import styles from './styles';
 
 const Login: React.FC = () => {
   const {t} = useTranslation();

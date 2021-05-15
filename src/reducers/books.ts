@@ -5,7 +5,7 @@ import {urls} from '@constants';
 import {TBook} from '@types';
 import {setLoader} from './_global';
 
-enum Books {
+enum BooksTypes {
   GET_BOOKS = '[books] GET_BOOKS',
   SET_BOOKS = '[books] SET_BOOKS',
   SEARCH_BOOKS = '[books] SEARCH_BOOKS',
@@ -16,23 +16,23 @@ const initialstate = new INITIAL_BOOKS();
 
 export default (state = initialstate, action: any) => {
   switch (action.type) {
-    case Books.SET_BOOKS:
+    case BooksTypes.SET_BOOKS:
       return new INITIAL_BOOKS({...state, booksList: action.books});
-    case Books.RESET_BOOKS:
+    case BooksTypes.RESET_BOOKS:
       return initialstate;
     default:
       return state;
   }
 };
 
-export const getBooks = () => ({type: Books.GET_BOOKS});
-export const setBooks = (books: TBook[]) => ({books, type: Books.SET_BOOKS});
-export const searchBooks = (query: string) => ({query, type: Books.SEARCH_BOOKS});
-export const resetBooks = () => ({type: Books.RESET_BOOKS});
+export const getBooks = () => ({type: BooksTypes.GET_BOOKS});
+export const setBooks = (books: TBook[]) => ({books, type: BooksTypes.SET_BOOKS});
+export const searchBooks = (query: string) => ({query, type: BooksTypes.SEARCH_BOOKS});
+export const resetBooks = () => ({type: BooksTypes.RESET_BOOKS});
 
 export function* watchBooks() {
-  yield takeLatest(Books.GET_BOOKS, getBooksAsync);
-  yield debounce(800, Books.SEARCH_BOOKS, searchBooksAsync);
+  yield takeLatest(BooksTypes.GET_BOOKS, getBooksAsync);
+  yield debounce(800, BooksTypes.SEARCH_BOOKS, searchBooksAsync);
 }
 
 export function* getBooksAsync() {
@@ -47,7 +47,7 @@ export function* getBooksAsync() {
   }
 }
 
-export function* searchBooksAsync(action: {query: string; type: Books}) {
+export function* searchBooksAsync(action: {query: string; type: BooksTypes}) {
   yield put(setLoader(true));
   try {
     const {data} = yield call(() => httpGet(`${urls.books}?q=${action.query}`));
