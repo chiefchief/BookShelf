@@ -1,4 +1,14 @@
 {
   "Welcome Screen": "Welcome Screen",
-  "": ""
+  "No account? REGISTER!": "No account? REGISTER!",
+  "Back to LOGIN": "Back to LOGIN",
+  "Username": "Username",
+  "Password": "Password",
+  "Login": "Login",
+  "Register": "Register",
+  "Author: {{author}}": "Author: {{author}}",
+  "Publisher: {{publisher}}": "Publisher: {{publisher}}",
+  "Page count: {{count}}": "Page count: {{count}}",
+  "Search": "Search",
+  "Synopsis": "Synopsis"
 }

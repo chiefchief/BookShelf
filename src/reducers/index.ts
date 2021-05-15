@@ -1,11 +1,13 @@
 import {combineReducers} from 'redux';
 import _global from './_global';
-import _persisted from './_persisted';
+import user from './user';
+import books from './books';
 // ADD IMPORT
 
 const rootReducer = combineReducers({
   _global,
-  _persisted,
+  user,
+  books,
   // ADD NEW REDUCER
 });
 

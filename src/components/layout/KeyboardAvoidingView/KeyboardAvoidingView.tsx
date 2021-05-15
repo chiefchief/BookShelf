@@ -14,7 +14,7 @@ const KeyboardAvoidingView: React.FC<TProps> = ({
   });
 
   return (
-    <KAView keyboardVerticalOffset={keyboardVerticalOffset || 0} behavior={behavior} {...props}>
+    <KAView  keyboardVerticalOffset={keyboardVerticalOffset || 0} behavior={behavior} {...props}>
       {children}
     </KAView>
   );
@@ -29,6 +29,6 @@ type TProps = {
   keyboardVerticalOffset?: number;
   iosBehavior?: TBehavior;
   androidBehavior?: TBehavior;
-};
+}
 
 type TBehavior = 'padding' | 'height' | 'position' | undefined;

@@ -12,23 +12,14 @@ const persistConfig = {
   timeout: 10000,
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['_persisted'], // ADD WHITE LIST IF YOU NEED
+  whitelist: ['user'], // ADD WHITE LIST IF YOU NEED
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
 
-const storeCreation: TStore = () => {
-  const enhancer = composeWithDevTools(applyMiddleware(sagaMiddleware));
-  const store = createStore(persistedReducer, enhancer);
-  const persistor = persistStore(store);
+const enhancer = composeWithDevTools(applyMiddleware(sagaMiddleware));
+const store = createStore(persistedReducer, enhancer);
+const persistor = persistStore(store);
 
-  sagaMiddleware.run(rootSaga);
-  return {store, persistor};
-};
-
-export default storeCreation();
-
-type TStore = () => {
-  store: any;
-  persistor: any;
-};
+sagaMiddleware.run(rootSaga);
+export {store, persistor};

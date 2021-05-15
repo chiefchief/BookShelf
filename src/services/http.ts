@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {TGenerateOptions, TFormatResponse} from '@types';
+import {store} from '../store';
 
 const baseURL = 'http://104.248.26.141:3000/api';
 
@@ -35,7 +36,7 @@ const sendRequest = async ({method, url, data = undefined, params = undefined}: 
 };
 
 const generateOptions = ({method, url, data, params}: TGenerateOptions) => {
-  const token = '';
+  const token = store.getState().user.token;
 
   const defaultHeaders = {
     'Content-Type': 'application/json',
@@ -44,7 +45,7 @@ const generateOptions = ({method, url, data, params}: TGenerateOptions) => {
   };
 
   const authHeaders = {
-    Authorization: `${token}`,
+    Authorization: `Bearer ${token}`,
   };
 
   return {

@@ -2,10 +2,18 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {
-  Start,
+  Login,
+  Register,
+  Home,
+  BookDetail,
   // ADD NEW SCREEN
 } from '@screens';
 import {navigationRef, onStateChange} from '@services';
+import {theme} from './theme';
+import {connect} from 'react-redux';
+import {TAppState} from '@reducers/index';
+import {INITIAL_USER} from '@reducers/__proto__';
+import {ExitButton} from '@components';
 
 const InitialStack = createStackNavigator();
 const AuthStack = createStackNavigator();
@@ -13,25 +21,31 @@ const HomeStack = createStackNavigator();
 
 const AuthNavigator: React.FC = () => {
   return (
-    <AuthStack.Navigator>
-      <AuthStack.Screen name="Start" component={Start} />
+    <AuthStack.Navigator screenOptions={{headerShown: false}}>
+      <AuthStack.Screen name="Login" component={Login} />
+      <AuthStack.Screen name="Register" component={Register} />
     </AuthStack.Navigator>
   );
 };
 
 const HomeNavigator: React.FC = () => {
   return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen name="Start" component={Start} />
+    <HomeStack.Navigator screenOptions={{headerRight: ExitButton}}>
+      <HomeStack.Screen name="Home" component={Home} />
+      <HomeStack.Screen name="BookDetail" component={BookDetail} />
     </HomeStack.Navigator>
   );
 };
 
-const AppNavigator: React.FC = () => {
+type TProps = {
+  user: INITIAL_USER;
+};
+
+const AppNavigator: React.FC<TProps> = ({user}) => {
   return (
-    <NavigationContainer ref={navigationRef} onStateChange={onStateChange}>
+    <NavigationContainer theme={theme} ref={navigationRef} onStateChange={onStateChange}>
       <InitialStack.Navigator screenOptions={{headerShown: false}}>
-        {false ? (
+        {user.token ? (
           <InitialStack.Screen name="HomeNavigator" component={HomeNavigator} />
         ) : (
           <InitialStack.Screen name="AuthNavigator" component={AuthNavigator} />
@@ -41,4 +55,8 @@ const AppNavigator: React.FC = () => {
   );
 };
 
-export default AppNavigator;
+const mapStateToProps = (state: TAppState) => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps)(AppNavigator);
