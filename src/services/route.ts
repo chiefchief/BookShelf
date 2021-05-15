@@ -6,7 +6,7 @@ import {NavigationContainerRef} from '@react-navigation/core';
 export let currentRouteName: string = '';
 
 export const navigationRef: React.RefObject<NavigationContainerRef> = React.createRef();
-export const onStateChange: TOnStateChange = (state) => {
+export const onStateChange: TOnStateChange = state => {
   currentRouteName = parseRoute(state);
 };
 
@@ -29,7 +29,7 @@ export function popToTop() {
   navigationRef?.current?.dispatch(StackActions.popToTop());
 }
 
-export const parseRoute: TParseRoute = (initialState) => {
+export const parseRoute: TParseRoute = initialState => {
   const state = initialState?.routes[0]?.state || undefined;
   const name = initialState?.routes[0]?.name || 'No Screen Name';
   if (state) {

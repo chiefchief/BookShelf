@@ -5,7 +5,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: top,
-    paddingBottom: bottom,
+    paddingBottom: bottom || 24,
     backgroundColor: colors.gray_CFCFCF,
     justifyContent: 'flex-end',
     alignItems: 'center',
