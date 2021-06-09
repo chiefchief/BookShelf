@@ -29,16 +29,14 @@ const Register: React.FC = () => {
   const onSubmitEditing = () => {
     setLoading(!loading);
     setError('');
-    setTimeout(async () => {
-      try {
-        const {data} = await httpPost(urls.register, {username, password});
-        dispatch(setUser(data.user || {}));
-        setLoading(false);
-      } catch (e) {
-        setError(e.data?.message || '');
-        setLoading(false);
-      }
-    }, 800);
+    try {
+      const {data} = await httpPost(urls.register, {username, password});
+      dispatch(setUser(data.user || {}));
+      setLoading(false);
+    } catch (e) {
+      setError(e.data?.message || '');
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
